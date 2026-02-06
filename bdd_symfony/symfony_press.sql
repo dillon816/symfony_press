@@ -1,12 +1,5 @@
 
 
---
--- Database: `symfony_press`
-
--
--- Dumping data for table `category`
---
-
 INSERT INTO `category` (`id`, `name`, `slug`) VALUES
 (1, 'Symfony', 'symfony'),
 (2, 'PHP', 'php'),
@@ -14,7 +7,7 @@ INSERT INTO `category` (`id`, `name`, `slug`) VALUES
 (4, 'Frontend', 'frontend'),
 (5, 'Architecture', 'architecture');
 
--- Table structure for table `user`
+
 
 
 INSERT INTO `user` (`id`, `email`, `roles`, `password`, `name`) VALUES
@@ -37,4 +30,3 @@ INSERT INTO `article` (`id`, `title`, `slug`, `content`, `image`, `created_at`, 
 (11, 'modif', 'modif', 'ddddddddddddddddddd', NULL, '2026-02-06 13:17:29', 5, 9),
 (12, 'Doctrine et les relationsfezgthrrytjt', 'doctrine-et-les-relationsfezgthrrytjt', 'dddeqgththnnntynytynnt,tyntytntntntyddd', 'article_698600c9956718.08403393.png', '2026-02-06 14:55:05', 3, 10);
 
--- --------------------------------------------------------
