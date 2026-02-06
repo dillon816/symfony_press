@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Admin - Modifier un article
+{% endblock %}
+
+{% block body %}
+	<main>
+		<header>
+			<h1>Modifier :
+				{{ article.title }}</h1>
+			<a href="{{ path('admin_article_index') }}">← Retour</a>
+		</header>
+		{% if article.image %}
+			<figure>
+				<img src="{{ asset('uploads/articles/' ~ article.image) }}" alt="Image de couverture : {{ article.title }}" loading="lazy" width="640" height="360">
+				<figcaption>Image actuelle</figcaption>
+			</figure>
+		{% endif %}
+
+		<section>
+			{% include 'pages/admin/article/_form.html.twig' with {
+            form: form,
+            button_label: 'Mettre à jour'
+        } %}
+		</section>
+	</main>
+{% endblock %}
+

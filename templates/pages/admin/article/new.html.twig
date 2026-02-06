@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Admin - Créer un article{% endblock %}
+
+{% block body %}
+<header>
+  <h1>Créer un article</h1>
+  <a class="btn" href="{{ path('admin_article_index') }}">← Retour</a>
+</header>
+
+<section>
+  {% include 'pages/admin/article/_form.html.twig' with { form: form, button_label: 'Créer' } %}
+</section>
+{% endblock %}

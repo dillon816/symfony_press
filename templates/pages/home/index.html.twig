@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil — SymfonyPress{% endblock %}
+
+{% block body %}
+    <section aria-label="Présentation">
+        <header>
+            <h1>SymfonyPress</h1>
+            <p>Mini CMS</p>
+        </header>
+    </section>
+
+    <section aria-label="Liste des catégories">
+        <header>
+            <h2>Catégories</h2>
+        </header>
+
+        <nav aria-label="Navigation des catégories">
+            <ul>
+                {% for category in categories %}
+                    <li>
+                        <a href="{{ path('category_show', { slug: category.slug }) }}">
+                            #{{ category.name }}
+                        </a>
+                    </li>
+                {% else %}
+                    <li role="alert">Aucune catégorie.</li>
+                {% endfor %}
+            </ul>
+        </nav>
+    </section>
+
+    <section id="articles" aria-label="Liste des articles">
+        <header>
+            <h2>Articles</h2>
+        </header>
+
+        <div>
+            {% for article in articles %}
+                {% include 'components/article_preview.html.twig' with { article: article } %}
+            {% else %}
+                <p role="alert">Aucun article.</p>
+            {% endfor %}
+        </div>
+    </section>
+{% endblock %}

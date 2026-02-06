@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Admin - Articles{% endblock %}
+
+{% block body %}
+<main>
+    <header>
+        <h1>Administration — Articles</h1>
+        <a href="{{ path('admin_article_new') }}">+ Créer un article</a>
+    </header>
+
+    <section>
+        {% if articles is empty %}
+            <p>Aucun article pour le moment.</p>
+        {% else %}
+            {% for article in articles %}
+                <article aria-label="Article (admin)">
+                    <header>
+                        <h2>{{ article.title }}</h2>
+                    </header>
+
+                    <section>
+                        <p><strong>Catégorie :</strong> {{ article.category.name }}</p>
+
+                        {% if article.author %}
+                            <p><small><strong>Auteur :</strong> {{ article.author.name }}</small></p>
+                        {% endif %}
+
+                        {% if article.content %}
+                            <p>{{ article.content|slice(0, 120) }}…</p>
+                        {% endif %}
+                    </section>
+
+                    <footer>
+                        <a href="{{ path('admin_article_edit', { id: article.id }) }}">Modifier</a>
+
+                        <form method="post"
+                              action="{{ path('admin_article_delete', { id: article.id }) }}"
+                              style="display:inline"
+                              onsubmit="return confirm('Confirmer la suppression ?');">
+                            <input type="hidden" name="_token" value="{{ csrf_token('delete_article_' ~ article.id) }}">
+                            <button type="submit">Supprimer</button>
+                        </form>
+                    </footer>
+                </article>
+
+                <hr>
+            {% endfor %}
+        {% endif %}
+    </section>
+</main>
+{% endblock %}

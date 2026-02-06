@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ article.title }} — SymfonyPress{% endblock %}
+
+{% block body %}
+<main>
+    <article aria-label="Article complet">
+        <header>
+            <h1>{{ article.title }}</h1>
+
+            {% if article.createdAt %}
+                <p>
+                    <time datetime="{{ article.createdAt|date('c') }}">
+                        {{ article.createdAt|date('d/m/Y') }}
+                    </time>
+                </p>
+            {% endif %}
+
+            {% if article.category %}
+                <p>
+                    Catégorie :
+                    <a href="{{ path('category_show', { slug: article.category.slug }) }}">
+                        {{ article.category.name }}
+                    </a>
+                </p>
+            {% endif %}
+        </header>
+
+       {% if article.image %}
+            <figure style="margin:1rem 0;">
+                <img src="{{ asset('uploads/articles/' ~ article.image) }}" alt="{{ article.title }}" loading="lazy" width="800" height="450" style="width:100%;height:auto;border-radius:10px;object-fit:cover;">
+            </figure>
+        {% endif %}
+
+        <section aria-label="Contenu de l’article">
+            {{ article.content }}
+        </section>
+    </article>
+</main>
+{% endblock %}

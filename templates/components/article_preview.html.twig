@@ -1,0 +1,30 @@
+<article aria-label="Aperçu d’article">
+	<header>
+		<h2>
+			<a href="{{ path('article_show', { slug: article.slug }) }}">
+				{{ article.title }}
+			</a>
+		</h2>
+	</header>
+	{% if article.author is defined and article.author %}
+		<p>
+			<small>
+				Par
+				{{ article.author.name }}
+			</small>
+		</p>
+	{% endif %}
+
+	{% if article.image is defined and article.image %}
+		<img src="{{ article.image }}" alt="Illustration de l’article : {{ article.title }}" loading="lazy">
+	{% endif %}
+
+	{% if article.createdAt is defined and article.createdAt %}
+		<p>
+			<time datetime="{{ article.createdAt|date('c') }}">
+				{{ article.createdAt|date('d/m/Y') }}
+			</time>
+		</p>
+	{% endif %}
+</article>
+

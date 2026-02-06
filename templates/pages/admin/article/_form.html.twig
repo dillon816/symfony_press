@@ -1,0 +1,14 @@
+{{ form_start(form) }}
+<main>
+  <section>
+    {{ form_row(form.title) }}
+    {{ form_row(form.content) }}
+    {{ form_row(form.category) }}
+    {{ form_row(form.imageFile) }}
+  </section>
+
+  <section>
+    <button type="submit">{{ button_label|default('Enregistrer') }}</button>
+  </section>
+</main>
+{{ form_end(form) }}
